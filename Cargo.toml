@@ -1,0 +1,27 @@
+[package]
+name = "healslut"
+version = "0.1.0"
+authors = ["Playful KittyKat <pkk@tabby.rocks>"]
+edition = "2018"
+license = "MPL"
+default-run = "healslut"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+buttplug = "0.6.0"
+futures = "0.3.5"
+async-std = "1.2.6"
+log = "0.4.11"
+env_logger = "0.7.1"
+gtk = { version = "0.9.1", features = ["v3_22"] }
+gdk = "0.13.0"
+gio = "0.9.0"
+glib = "0.10.1"
+scrap = "0.5.0"
+directories = "3.0.1"
+toml = "0.5.6"
+serde = "1.0.115"
+snafu = "0.6.8"
+gdk-pixbuf = { version = "0.9.0", features = ["v2_32"] }
+bit-vec = { version = "0.6.2", features = ["serde"] }
