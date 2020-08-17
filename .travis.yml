@@ -1,0 +1,42 @@
+os:
+    - linux
+    - windows
+language: rust
+rust:
+    - 1.44.1
+    - stable
+    - nightly
+dist: bionic
+addons:
+    apt:
+        update: true
+        packages:
+            - libudev-dev
+            - libusb-1.0-0-dev
+            - libgtk-3-dev
+before_install:
+    - if [ "$TRAVIS_OS_NAME" = "windows" ]; then bash ./build_scripts/windows_install.bash; fi
+
+script:
+    - if [ "$TRAVIS_OS_NAME" = "windows" ]; then cmd.exe //C build_scripts\\windows_build.bat; fi
+    - if [ "$TRAVIS_OS_NAME" != "windows" ]; then cargo test; fi
+jobs:
+    allow_failures:
+        - rust: nightly
+    fast_finish: true
+cache:
+    cargo: true
+    directories:
+        - /C/gtk-build
+
+deploy:
+    provider: releases
+    file_glob: true
+    file: "target/gh/*"
+    skip_cleanup: true
+    on:
+        repo: playfulkittykat/healslut
+        tags: true
+        condition: "$TRAVIS_OS_NAME = windows"
+    api_key:
+        secure: gp+PxlyKyK9uiLpmuAnHJmvn6Wu+g2mGEqw9pSU/dnuAvBCjU1espjHUai9usbaNzlgFCCaPq1xK8zI10k3v2Y38zmPCr5RVuTGXLmuIDnuY1MkqTKC3lvi8KI0J7MK/AGEtFWtwcKi7bfBqxNG83AW+8Glh4NXl2LpuH5yVkPNUPHmtcuEPlE+hTHz3PdwqfmZog/08uOavN0QMMHsqbewXX3P1hA3vbP6tYP5TMUl3dlHp4x003UU2Jp2wQ6v1wi3ehuTd5ug8xy+WuzAb7Kw/Z5JDIw2YmZ2ozpmol/G0TLRUd0eWoN0b7lqWSk7aBOxK7S3Vn4BV5RDo9DKA071fTmm4UVfBHiwlZYufmwm14NcfwAw+j0QUS8MDL+mEk9Tm7H5sPIUvjURYD9HNMNrXkkROGdw4+CLdXpZJqovBCcGTn6W1t+a22NpDoZgFuCKV1pKXO8ZP4Rqse8ClA6ims2lr4ymdT0bonAXjTOI3u9jF0hEhR0YoOEZNA/dJ34jDJaFbNxxdbKvLqXmeogek1FgPAMIBy6uOLe+8vfoeRJseYYd8mSO/foOAb4q3lffjL/c2fyoB36uxu+8DbfCw+iC0MR7SOY1uIWXn0vV8VTN+1qDNXPmheq9cRWGRGsh2rmKJZhqJLA+Pd5j7t3jB2voRlM2mjsUZ8uf06Fk=
