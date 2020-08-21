@@ -2,6 +2,7 @@ call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliar
 
 echo on
 
+set WIX=C:\Program Files (x86)\WiX Toolset v3.11
 set PATH=%PATH%;%USERPROFILE%\.cargo\bin;C:\gtk-build\gtk\x64\release\bin;C:\tools\msys64\usr\bin;C:\Program Files (x86)\WiX Toolset v3.11\bin
 
 cargo test --release || exit /b 1

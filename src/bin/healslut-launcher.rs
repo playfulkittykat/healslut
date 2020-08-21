@@ -2,6 +2,8 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+#![cfg_attr(target_family = "windows", windows_subsystem = "windows")]
+
 use std::env;
 use std::process::Command;
 

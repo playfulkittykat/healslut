@@ -315,6 +315,9 @@
             <ComponentRef Id='fontconfig'/>
             <ComponentRef Id='png16'/>
             <ComponentRef Id='freetype'/>
+            <ComponentGroupRef Id='GtkEtc'/>
+            <ComponentGroupRef Id='GtkShare'/>
+            <ComponentGroupRef Id='GtkLib'/>
         </Feature>
 
         <SetProperty Id='ARPINSTALLLOCATION' Value='[APPLICATIONFOLDER]' After='CostFinalize'/>
@@ -353,9 +356,9 @@
                 3. Replace the `Value` attribute of the `WixVariable` tag with
                    the path to a RTF file that will be used as the EULA and
                    displayed in the license agreement dialog.
-            -->
             <Publish Dialog='WelcomeDlg' Control='Next' Event='NewDialog' Value='CustomizeDlg' Order='99'>1</Publish>
             <Publish Dialog='CustomizeDlg' Control='Back' Event='NewDialog' Value='WelcomeDlg' Order='99'>1</Publish>
+            -->
 
         </UI>
 
@@ -365,7 +368,7 @@
           the following `WixUILicenseRTF` tag and changing the `Value`
           attribute.
         -->
-        <!-- <WixVariable Id='WixUILicenseRtf' Value='Relative\Path\to\Eula.rtf'/> -->
+        <WixVariable Id='WixUILicenseRtf' Value='LICENSE.rtf'/>
 
 
         <!--

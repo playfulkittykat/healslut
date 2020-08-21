@@ -3,6 +3,7 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 #![allow(clippy::many_single_char_names)]
+#![cfg_attr(target_family = "windows", windows_subsystem = "windows")]
 
 mod capture;
 mod config;

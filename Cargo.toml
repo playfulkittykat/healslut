@@ -29,3 +29,11 @@ serde = "1.0.115"
 snafu = "0.6.8"
 gdk-pixbuf = { version = "0.9.0", features = ["v2_32"] }
 bit-vec = { version = "0.6.2", features = ["serde"] }
+
+[package.metadata.wix]
+compiler-args = [
+    "-dGtkEtcSrc=C:\\gtk-build\\gtk\\x64\\release\\etc",
+    "-dGtkShareSrc=C:\\gtk-build\\gtk\\x64\\release\\share",
+    "-dGtkLibSrc=C:\\gtk-build\\gtk\\x64\\release\\lib",
+]
+linker-args = ["-sice:ICE80"]
