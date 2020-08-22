@@ -50,6 +50,7 @@ pub struct Config {
 
 impl Config {
     fn path() -> Result<PathBuf, Error> {
+        // TODO: Move this into a common library.
         let dirs = ProjectDirs::from(
             "rocks.tabby",
             "Tabby Rocks",
