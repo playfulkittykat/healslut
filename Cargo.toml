@@ -1,6 +1,6 @@
 [package]
 name = "healslut"
-version = "0.1.0"
+version = "0.2.0-dev"
 authors = ["Playful KittyKat <pkk@tabby.rocks>"]
 edition = "2018"
 license = "MPL-2.0"
